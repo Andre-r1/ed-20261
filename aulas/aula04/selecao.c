@@ -37,9 +37,9 @@ int particionar_vetor(int v[], int inicio, int fim)
 
 int quick_select(int v[], int inicio, int fim, int valor)
 {
-    if (inicio == fim)
+    if (inicio > fim)
     {
-        return inicio;
+        return -1;
     }
 
     int pivo = particionar_vetor(v, inicio, fim);
@@ -48,7 +48,7 @@ int quick_select(int v[], int inicio, int fim, int valor)
     {
         return pivo;
     }
-    else if (v[pivo] < valor)
+    else if (v[pivo] < v[pivo])
     {
         // procura antes do pivo
         quick_select(v, inicio, pivo - 1, valor);
@@ -56,6 +56,6 @@ int quick_select(int v[], int inicio, int fim, int valor)
     else
     {
         // procura depois do pivo
-        quick_select(v, pivo + 1, fim, valor);
+       return quick_select(v, pivo + 1, fim, valor);
     }
 }
